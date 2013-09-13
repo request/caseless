@@ -1,0 +1,23 @@
+{
+  "name": "caseless",
+  "version": "0.0.0",
+  "description": "Caseless object set/get/has, very useful when working with HTTP headers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikeal/caseless"
+  },
+  "keywords": [
+    "headers",
+    "http",
+    "caseless"
+  ],
+  "author": "Mikeal Rogers <mikeal.rogers@gmail.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/mikeal/caseless/issues"
+  }
+}
