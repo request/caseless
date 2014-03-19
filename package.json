@@ -15,9 +15,13 @@
     "http",
     "caseless"
   ],
+  "test": "node test.js",
   "author": "Mikeal Rogers <mikeal.rogers@gmail.com>",
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/mikeal/caseless/issues"
+  },
+  "devDependencies": {
+    "tape": "^2.10.2"
   }
 }

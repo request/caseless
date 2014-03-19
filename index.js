@@ -7,30 +7,38 @@ Caseless.prototype.set = function (name, value, clobber) {
       this.set(i, name[i], value)
     }
   } else {
-    if (clobber === undefined) clobber = true
-    if (clobber || !this.has(name)) this.dict[name] = value
-    else this.dict[this.has(name)] += ',' + value
-    return this
+    if (typeof clobber === 'undefined') clobber = true
+    var has = this.has(name)
+
+    if (!clobber && has) this.dict[has] = this.dict[has] + ',' + value
+    else this.dict[has || name] = value
+    return has
   }
 }
 Caseless.prototype.has = function (name) {
-  var lheaders = this.dict.map(function (h) {return h.toLowerCase()})
+  var keys = Object.keys(this.dict)
+    , name = name.toLowerCase()
     ;
-  name = name.toLowerCase()
-  for (var i=0;i<lheaders.length;i++) {
-    if (lheaders[i] === name) return lheaders[i]
+  for (var i=0;i<keys.length;i++) {
+    if (keys[i].toLowerCase() === name) return keys[i]
   }
   return false
 }
 Caseless.prototype.get = function (name) {
   var result, re, match
-  var headers = this.headers
+  var headers = this.dict
   Object.keys(headers).forEach(function (key) {
     re = new RegExp(name, 'i')
     match = key.match(re)
     if (match) result = headers[key]
   })
   return result
+}
+Caseless.prototype.swap = function (name) {
+  var has = this.has(name)
+  if (!has) throw new Error('There is no header than matches "'+name+'"')
+  this.dict[name] = this.dict[has]
+  delete this.dict[has]
 }
 
 module.exports = function (dict) {return new Caseless(dict)}
