@@ -6,7 +6,7 @@ tape('set get has', function (t) {
   var headers = {}
     , c = caseless(headers)
     ;
-  t.plan(9)
+  t.plan(11)
   c.set('a-Header', 'asdf')
   t.equal(c.get('a-header'), 'asdf')
   t.equal(c.has('a-header'), 'a-Header')
@@ -22,5 +22,10 @@ tape('set get has', function (t) {
   t.deepEqual(headers, {'a-Header': 'fdsa,more'})
   c.swap('a-HEADER')
   t.deepEqual(headers, {'a-HEADER': 'fdsa,more'})
+
+  c.set('deleteme', 'foobar')
+  t.ok(c.has('deleteme'))
+  c.del('deleteme')
+  t.ok(!c.has('deleteme'))
 
 })

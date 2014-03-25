@@ -40,6 +40,10 @@ Caseless.prototype.swap = function (name) {
   this.dict[name] = this.dict[has]
   delete this.dict[has]
 }
+Caseless.prototype.del = function (name) {
+  var has = this.has(name)
+  return delete this.dict[has] || name
+}
 
 module.exports = function (dict) {return new Caseless(dict)}
 module.exports.httpify = function (resp, headers) {
