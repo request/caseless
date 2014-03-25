@@ -42,7 +42,7 @@ Caseless.prototype.swap = function (name) {
 }
 Caseless.prototype.del = function (name) {
   var has = this.has(name)
-  return delete this.dict[has] || name
+  return delete this.dict[has || name]
 }
 
 module.exports = function (dict) {return new Caseless(dict)}
