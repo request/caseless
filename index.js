@@ -51,7 +51,7 @@ module.exports.httpify = function (resp, headers) {
     return c.has(key)
   }
   resp.getHeader = function (key) {
-    return c.getHeader(key)
+    return c.get(key)
   }
   return c
 }
