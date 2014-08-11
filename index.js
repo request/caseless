@@ -57,6 +57,9 @@ module.exports.httpify = function (resp, headers) {
   resp.getHeader = function (key) {
     return c.get(key)
   }
+  resp.removeHeader = function (key) {
+    return c.del(key)
+  }
   resp.headers = c.dict
   return c
 }
