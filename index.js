@@ -57,5 +57,6 @@ module.exports.httpify = function (resp, headers) {
   resp.getHeader = function (key) {
     return c.get(key)
   }
+  resp.headers = c.dict
   return c
 }
