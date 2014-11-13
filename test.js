@@ -38,136 +38,136 @@ tape('set get has', function (t) {
 
   t.equal(c.get('tva'), 'test1')
 
-  t.equal(exports.detect().length, 0);
+  t.equal(exports.detect().length, 0)
 
 })
 
 exports.detect = function () {
 
   var whitelist = {
-    _labScriptRun: true,
-    prop: true,
+    _labScriptRun: true
+    , prop: true
 
     // Enumerable globals
-    setTimeout: true,
-    setInterval: true,
-    setImmediate: true,
-    clearTimeout: true,
-    clearInterval: true,
-    clearImmediate: true,
-    console: true,
-    Buffer: true,
-    process: true,
-    global: true,
-    GLOBAL: true,
-    constructor: true,
-    ArrayBuffer: true,
-    Int8Array: true,
-    Uint8Array: true,
-    Uint8ClampedArray: true,
-    Int16Array: true,
-    Uint16Array: true,
-    Int32Array: true,
-    Uint32Array: true,
-    Float32Array: true,
-    Float64Array: true,
-    DataView: true,
-    __$$labCov: true,
-    gc: true,
+    , setTimeout: true
+    , setInterval: true
+    , setImmediate: true
+    , clearTimeout: true
+    , clearInterval: true
+    , clearImmediate: true
+    , console: true
+    , Buffer: true
+    , process: true
+    , global: true
+    , GLOBAL: true
+    , constructor: true
+    , ArrayBuffer: true
+    , Int8Array: true
+    , Uint8Array: true
+    , Uint8ClampedArray: true
+    , Int16Array: true
+    , Uint16Array: true
+    , Int32Array: true
+    , Uint32Array: true
+    , Float32Array: true
+    , Float64Array: true
+    , DataView: true
+    , __$$labCov: true
+    , gc: true
 
     // Non-Enumerable globals
-    Array: true,
-    isNaN: true,
-    ReferenceError: true,
-    Number: true,
-    RangeError: true,
-    EvalError: true,
-    Function: true,
-    isFinite: true,
-    Object: true,
-    undefined: true,
-    Date: true,
-    SyntaxError: true,
-    String: true,
-    eval: true,
-    parseFloat: true,
-    unescape: true,
-    Error: true,
-    encodeURI: true,
-    NaN: true,
-    RegExp: true,
-    encodeURIComponent: true,
-    Math: true,
-    decodeURI: true,
-    parseInt: true,
-    Infinity: true,
-    escape: true,
-    decodeURIComponent: true,
-    JSON: true,
-    TypeError: true,
-    URIError: true,
-    Boolean: true
-  };
+    , Array: true
+    , isNaN: true
+    , ReferenceError: true
+    , Number: true
+    , RangeError: true
+    , EvalError: true
+    , Function: true
+    , isFinite: true
+    , Object: true
+    , undefined: true
+    , Date: true
+    , SyntaxError: true
+    , String: true
+    , eval: true
+    , parseFloat: true
+    , unescape: true
+    , Error: true
+    , encodeURI: true
+    , NaN: true
+    , RegExp: true
+    , encodeURIComponent: true
+    , Math: true
+    , decodeURI: true
+    , parseInt: true
+    , Infinity: true
+    , escape: true
+    , decodeURIComponent: true
+    , JSON: true
+    , TypeError: true
+    , URIError: true
+    , Boolean: true
+  }
 
   // Harmony features.
 
   if (global.Promise) {
-    whitelist.Promise = true;
+    whitelist.Promise = true
   }
 
   if (global.Proxy) {
-    whitelist.Proxy = true;
+    whitelist.Proxy = true
   }
 
   if (global.Symbol) {
-    whitelist.Symbol = true;
+    whitelist.Symbol = true
   }
 
   if (global.Map) {
-    whitelist.Map = true;
+    whitelist.Map = true
   }
 
   if (global.WeakMap) {
-    whitelist.WeakMap = true;
+    whitelist.WeakMap = true
   }
 
   if (global.Set) {
-    whitelist.Set = true;
+    whitelist.Set = true
   }
 
   if (global.WeakSet) {
-    whitelist.WeakSet = true;
+    whitelist.WeakSet = true
   }
 
   if (global.DTRACE_HTTP_SERVER_RESPONSE) {
-    whitelist.DTRACE_HTTP_SERVER_RESPONSE = true;
-    whitelist.DTRACE_HTTP_SERVER_REQUEST = true;
-    whitelist.DTRACE_HTTP_CLIENT_RESPONSE = true;
-    whitelist.DTRACE_HTTP_CLIENT_REQUEST = true;
-    whitelist.DTRACE_NET_STREAM_END = true;
-    whitelist.DTRACE_NET_SERVER_CONNECTION = true;
-    whitelist.DTRACE_NET_SOCKET_READ = true;
-    whitelist.DTRACE_NET_SOCKET_WRITE = true;
+    whitelist.DTRACE_HTTP_SERVER_RESPONSE = true
+    whitelist.DTRACE_HTTP_SERVER_REQUEST = true
+    whitelist.DTRACE_HTTP_CLIENT_RESPONSE = true
+    whitelist.DTRACE_HTTP_CLIENT_REQUEST = true
+    whitelist.DTRACE_NET_STREAM_END = true
+    whitelist.DTRACE_NET_SERVER_CONNECTION = true
+    whitelist.DTRACE_NET_SOCKET_READ = true
+    whitelist.DTRACE_NET_SOCKET_WRITE = true
   }
 
   if (global.COUNTER_NET_SERVER_CONNECTION) {
-    whitelist.COUNTER_NET_SERVER_CONNECTION = true;
-    whitelist.COUNTER_NET_SERVER_CONNECTION_CLOSE = true;
-    whitelist.COUNTER_HTTP_SERVER_REQUEST = true;
-    whitelist.COUNTER_HTTP_SERVER_RESPONSE = true;
-    whitelist.COUNTER_HTTP_CLIENT_REQUEST = true;
-    whitelist.COUNTER_HTTP_CLIENT_RESPONSE = true;
+    whitelist.COUNTER_NET_SERVER_CONNECTION = true
+    whitelist.COUNTER_NET_SERVER_CONNECTION_CLOSE = true
+    whitelist.COUNTER_HTTP_SERVER_REQUEST = true
+    whitelist.COUNTER_HTTP_SERVER_RESPONSE = true
+    whitelist.COUNTER_HTTP_CLIENT_REQUEST = true
+    whitelist.COUNTER_HTTP_CLIENT_RESPONSE = true
   }
 
-  var leaks = [];
-  var globals = Object.getOwnPropertyNames(global);
+  var leaks = []
+  var globals = Object.getOwnPropertyNames(global)
   for (var i = 0, il = globals.length; i < il; ++i) {
     if (!whitelist[globals[i]] &&
       global[globals[i]] !== global) {
 
-      leaks.push(globals[i]);
+      leaks.push(globals[i])
     }
   }
 
-  return leaks;
-};
+  return leaks
+}
