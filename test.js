@@ -42,6 +42,7 @@ tape('set get has', function (t) {
 
 })
 
+// taken from https://github.com/hapijs/lab/blob/10fb7f4abce30394c0f3a8581274c323638971b7/lib/leaks.js
 exports.detect = function () {
 
   var whitelist = {
