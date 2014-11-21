@@ -1,6 +1,6 @@
 {
   "name": "caseless",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Caseless object set/get/has, very useful when working with HTTP headers.",
   "main": "index.js",
   "scripts": {
