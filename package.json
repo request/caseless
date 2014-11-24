@@ -22,6 +22,6 @@
     "url": "https://github.com/mikeal/caseless/issues"
   },
   "devDependencies": {
-    "tape": "^2.10.2"
+    "tape": "^3.0.x"
   }
 }
