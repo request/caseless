@@ -3,6 +3,9 @@
   "version": "0.11.1",
   "description": "Caseless object set/get/has, very useful when working with HTTP headers.",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "node test.js"
   },
