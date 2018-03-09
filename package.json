@@ -1,7 +1,7 @@
 {
   "name": "caseless",
   "version": "0.12.1",
-  "description": "Caseless object set/get/has, very useful when working with HTTP headers.",
+  "description": "Caseless object set/get/has/del, very useful when working with HTTP headers.",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"

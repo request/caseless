@@ -42,8 +42,17 @@ Caseless.prototype.swap = function (name) {
   delete this.dict[has]
 }
 Caseless.prototype.del = function (name) {
-  var has = this.has(name)
-  return delete this.dict[has || name]
+  name = String(name).toLowerCase()
+  var deleted = false
+  var changed = 0
+  var dict = this.dict
+  Object.keys(this.dict).forEach(function(key) {
+    if (name === String(key).toLowerCase()) {
+      deleted = delete dict[key]
+      changed += 1
+    }
+  })
+  return changed === 0 ? true : deleted
 }
 
 module.exports = function (dict) {return new Caseless(dict)}
