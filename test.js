@@ -65,3 +65,20 @@ tape('swap', function (t) {
     c.swap('content-type')
   })
 })
+
+tape('del', function (t) {
+  var headers = {
+    'X-Random-Header': 'X',
+    'Content-Type': 'A',
+    'content-type': 'B'
+  }
+  var c = caseless(headers)
+  t.plan(4)
+  // Both headers should still be there
+  t.ok(c.has('X-Random-Header'))
+  t.ok(c.has('Content-Type'))
+  // Del should delete them all
+  c.del('Content-type')
+  t.ok(!c.has('Content-type'))
+  t.deepEqual(headers, {'X-Random-Header': 'X'})
+});

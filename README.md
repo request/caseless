@@ -1,6 +1,6 @@
 ## Caseless -- wrap an object to set and get property with caseless semantics but also preserve caseing.
 
-This library is incredibly useful when working with HTTP headers. It allows you to get/set/check for headers in a caseless manner while also preserving the caseing of headers the first time they are set.
+This library is incredibly useful when working with HTTP headers. It allows you to get/set/check/delete headers in a caseless manner while also preserving the headers' case when they are first set.
 
 ## Usage
 
@@ -42,4 +42,24 @@ c.set('a-Header', 'fdas')
 c.swap('a-HEADER')
 c.has('a-header') === 'a-HEADER'
 headers === {'a-HEADER': 'fdas'}
+```
+
+## del(key)
+
+Deletes a key and, if there's many instances of the key with multiple cases, all of them.
+
+```javascript
+
+var headers = {
+  'a-Header': true,
+  'content-length': 312,
+  'Content-Length': 312
+}
+var c = caseless(headers);
+
+c.del('Content-length');
+headers === {
+  'a-Header': true
+};
+
 ```
