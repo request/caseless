@@ -37,7 +37,7 @@ Caseless.prototype.get = function (name) {
 Caseless.prototype.swap = function (name) {
   var has = this.has(name)
   if (has === name) return
-  if (!has) throw new Error('There is no header than matches "'+name+'"')
+  if (!has) throw new Error('There is no header that matches "'+name+'"')
   this.dict[name] = this.dict[has]
   delete this.dict[has]
 }
